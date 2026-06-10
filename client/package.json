@@ -1,0 +1,17 @@
+{
+  "name": "hexrace-client",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.8.1",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.5"
+  }
+}

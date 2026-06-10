@@ -1,0 +1,20 @@
+{
+  "name": "hexrace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HexRace — 3D online multiplayer broomstick alchemy racing (listen-server)",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c yellow,cyan \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm start -w server",
+    "test": "npm test -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
