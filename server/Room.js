@@ -12,9 +12,11 @@ import { RaceSim } from './RaceSim.js';
 const COLORS = [0xff5d5d, 0x4dd2ff, 0x7dff9b, 0xffd24d, 0xc77dff, 0xff9b4d, 0x6bf0d8, 0xff7ad9];
 
 export class Room {
-  constructor(io, { fast = false } = {}) {
+  // fast: falsy = real timers; otherwise a divisor (true/1 → ×40 shrink)
+  constructor(io, { fast = 0 } = {}) {
     this.io = io;
-    this.timers = fast ? fastTimers() : TIMERS;
+    const divisor = fast === true || fast === 1 ? 40 : Number(fast);
+    this.timers = divisor > 1 ? fastTimers(divisor) : TIMERS;
     this.players = new Map();          // id -> player record
     this.sockets = new Map();          // id -> socket
     this.hostId = null;

@@ -64,6 +64,8 @@ function onRoom(st) {
   if (!joined) return;
   const phaseChanged = st.phase !== lastPhase;
   lastPhase = st.phase;
+  // testability hook for automated drivers (see .claude/skills/run-hexrace)
+  window.__hexrace = { phase: st.phase, round: st.round, myId: net.myId, players: st.players.length };
 
   switch (st.phase) {
     case PHASE.LOBBY:

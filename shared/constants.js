@@ -106,8 +106,8 @@ export const STAT = { SPEED: 'speed', ACCEL: 'accel', HANDLING: 'handling' };
 
 export const USABLE_DURATION = { surge: 4000, veil: 5000 };
 
-export function fastTimers() {
+export function fastTimers(divisor = 40) {
   const t = {};
-  for (const k of Object.keys(TIMERS)) t[k] = Math.max(60, Math.floor(TIMERS[k] / 40));
+  for (const k of Object.keys(TIMERS)) t[k] = Math.max(60, Math.floor(TIMERS[k] / divisor));
   return t;
 }

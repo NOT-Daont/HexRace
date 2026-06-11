@@ -11,7 +11,8 @@ import { Server } from 'socket.io';
 import { Room } from './Room.js';
 
 const PORT = Number(process.env.PORT || 3001);
-const FAST = process.env.HEXRACE_FAST === '1';
+// HEXRACE_FAST=1 → timers ×40 shorter (tests); any other number → that divisor
+const FAST = Number(process.env.HEXRACE_FAST || 0);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, '..', 'client', 'dist');
